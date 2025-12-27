@@ -1,0 +1,50 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+
+
+def load_and_preprocess_data(data_path):
+    # Load dataset
+    df = pd.read_csv(data_path)
+
+    # Separate features and target
+    X = df.drop("target", axis=1)
+    y = df["target"]
+
+    # Identify numeric and categorical columns
+    numeric_features = X.select_dtypes(include=["int64", "float64"]).columns
+    categorical_features = X.select_dtypes(include=["object"]).columns
+
+    # Numeric preprocessing (IMPUTE + SCALE)
+    numeric_transformer = Pipeline(
+        steps=[
+            ("imputer", SimpleImputer(strategy="median")),
+            ("scaler", StandardScaler())
+        ]
+    )
+
+    # Categorical preprocessing (IMPUTE + ENCODE)
+    categorical_transformer = Pipeline(
+        steps=[
+            ("imputer", SimpleImputer(strategy="most_frequent")),
+            ("encoder", OneHotEncoder(handle_unknown="ignore"))
+        ]
+    )
+
+    # Combine preprocessing
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ("num", numeric_transformer, numeric_features),
+            ("cat", categorical_transformer, categorical_features),
+        ]
+    )
+
+    # Train-test split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+
+    return X_train, X_test, y_train, y_test, preprocessor
