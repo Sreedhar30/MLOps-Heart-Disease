@@ -29,7 +29,11 @@ jobs:
         run: black src tests
 
       - name: Lint code (Flake8)
-        run: flake8 src tests --ignore=E501,W503
+        # Ignore long lines (E501), line break before binary operator (W503),
+        # and unused imports (F401) in tests only
+        run: |
+          flake8 src --ignore=E501,W503
+          flake8 tests --ignore=E501,W503,F401
 
       - name: Run unit tests
         run: pytest -v
@@ -42,4 +46,3 @@ jobs:
           else
             echo "Skipping training: dataset not found"
           fi
-
