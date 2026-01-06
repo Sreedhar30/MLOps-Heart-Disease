@@ -1,28 +1,24 @@
-# MLOps – Heart Disease Prediction
+MLOps Group 59 – Heart Disease Prediction
 
-## Project Overview
+Project Overview
 
 This project implements an end-to-end Machine Learning Operations (MLOps) pipeline for heart disease prediction.  
 It covers data acquisition, exploratory data analysis (EDA), feature engineering, model development, CI/CD, experiment tracking, containerization, API deployment, monitoring, and documentation.
 
 ---
 
-##  1. Setup & Installation
+1. Setup & Installation
 
-### Clone the Repository
-```bash
+Clone the Repository
+
 git clone https://github.com/Sreedhar30/MLOps-Heart-Disease
 cd MLOps-Heart-Disease
 Create and Activate Python Virtual Environment
-bash
-Copy code
+
 python -m venv venv
 venv\Scripts\activate         # Windows
-# or
-source venv/bin/activate      # Linux / Mac
-Install Dependencies
-bash
-Copy code
+
+
 pip install -r requirements.txt
 
 2. Data and Exploratory Data Analysis (EDA)
@@ -48,7 +44,6 @@ Visualizations included:
 Models trained:
 
 Logistic Regression
-
 Random Forest Classifier
 
 Best metrics logged via MLflow:
@@ -64,9 +59,7 @@ Random Forest selected as final model.
 Tracked:
 
 Parameters
-
 Metrics
-
 Model artifacts
 
 MLflow UI shows both model runs.
@@ -87,8 +80,6 @@ Tests located in tests/.
 Used FastAPI to serve model predictions.
 Endpoints:
 
-bash
-Copy code
 GET  /
 POST /predict
 GET  /metrics
@@ -101,6 +92,7 @@ Containerized using Docker.
 (Screenshots in screenshots/Step6)
 
 7. Production Deployment
+
 Deployed on local Kubernetes (Docker Desktop):
 
 ✔ Deployment manifest
@@ -109,6 +101,7 @@ Deployed on local Kubernetes (Docker Desktop):
 (Screenshots in screenshots/Step7/)
 
 8. Monitoring & Logging
+
 Implemented API request logging:
 ✔ Request path
 ✔ Status code
@@ -117,14 +110,11 @@ Implemented API request logging:
 
 Added metrics endpoint:
 
-bash
-Copy code
 GET /metrics
 (Screenshots in screenshots/Step8/)
 
 9. Architecture Diagram
-markdown
-Copy code
+
 User  →  FastAPI  →  Model Pipeline  →  Prediction
       ↕
       Logging  &  Metrics
@@ -138,8 +128,7 @@ Repository
 GitHub: https://github.com/Sreedhar30/MLOps-Heart-Disease
 
 Folder Structure
-css
-Copy code
+
 MLOps-Heart-Disease/
 ├── api/  
 ├── data/  
@@ -152,7 +141,9 @@ MLOps-Heart-Disease/
 ├── k8s/  
 ├── requirements.txt  
 └── README.md
+
 Conclusion
+
 This project demonstrates a full MLOps lifecycle:
 ✔ Data engineering
 ✔ Model training
@@ -163,6 +154,5 @@ This project demonstrates a full MLOps lifecycle:
 ✔ Logging & Monitoring
 ✔ Documentation
 
-CI trigger test
 
 
