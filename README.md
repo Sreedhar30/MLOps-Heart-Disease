@@ -24,8 +24,11 @@ Install Dependencies
 bash
 Copy code
 pip install -r requirements.txt
+
 2. Data and Exploratory Data Analysis (EDA)
 Dataset: Heart disease CSV
+Dataset sourced from UCI Heart Disease dataset.
+Data preprocessing performed in notebooks/EDA.ipynb.
 
 Handled missing values with median/mode imputation
 
