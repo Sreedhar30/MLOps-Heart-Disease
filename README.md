@@ -152,7 +152,7 @@ MLOps-Heart-Disease/
 ├── k8s/  
 ├── requirements.txt  
 └── README.md
-🔚 Conclusion
+Conclusion
 This project demonstrates a full MLOps lifecycle:
 ✔ Data engineering
 ✔ Model training
