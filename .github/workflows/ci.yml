@@ -29,8 +29,6 @@ jobs:
         run: black src tests
 
       - name: Lint code (Flake8)
-        # Ignore long lines (E501), line break before binary operator (W503),
-        # and unused imports (F401) in tests only
         run: |
           flake8 src --ignore=E501,W503
           flake8 tests --ignore=E501,W503,F401
@@ -38,11 +36,17 @@ jobs:
       - name: Run unit tests
         run: pytest -v
 
-      # Optional: Train model (skip if dataset not available in CI)
-      - name: Train model
+      - name: Train model (if dataset exists)
         run: |
           if [ -f "data/heart.csv" ]; then
             python src/train.py
           else
             echo "Skipping training: dataset not found"
           fi
+
+      # -------------------------
+      # CD STEP (Docker Build)
+      # -------------------------
+      - name: Build Docker image
+        run: |
+          docker build -t heart-disease-api .
