@@ -163,3 +163,6 @@ This project demonstrates a full MLOps lifecycle:
 ✔ Logging & Monitoring
 ✔ Documentation
 
+CI trigger test
+
+
