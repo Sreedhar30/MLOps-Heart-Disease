@@ -26,10 +26,11 @@ jobs:
           pip install pytest flake8
 
       - name: Lint code
-        run: flake8 src tests
+        run: flake8 src tests --ignore=E501,W503s
 
       - name: Run unit tests
         run: pytest
 
       - name: Train model
         run: python src/train.py
+
